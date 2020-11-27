@@ -107,7 +107,7 @@ export default function FirstPost() {
             <Card
               bg="sheet"
               p="3"
-              sx={{ fontSize: '4', letterSpacing: '9.24px' }}
+              sx={{ fontSize: '4', letterSpacing: '9.47px' }}
             >
               <span
                 style={{
@@ -138,17 +138,17 @@ export default function FirstPost() {
                   marginRight: '24px',
                   color: 'black',
                   fontSize: '20px',
-                  paddingLeft: '0px'
+                  paddingLeft: '2px'
                 }}
               >
-                <span style={{ marginLeft: '0.1px'}}>⬆️ </span>
+                <span>⬆️ </span>
                 <span>⬇️ </span>
                 <span>➡️ </span>
                 <span>⬅️ </span>
                 <span>↘️ </span>
                 <span>↙️ </span>
                 <span>↖️ </span>
-                <span>↗️ </span>
+                <span style={{letterSpacing: 'normal'}}>↗️</span>
               </span>
               <span
                 style={{
