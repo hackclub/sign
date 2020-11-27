@@ -1,25 +1,31 @@
 import { Container, Text, Card, Heading, Badge, Grid, Box } from 'theme-ui'
+import { useState } from 'react'
 
-const CircleButton = ({ circleColor, marginLeft }) => (
-  <span
-    style={{
-      height: '36px',
-      width: '36px',
-      backgroundColor: circleColor,
-      color: circleColor,
-      borderRadius: '50%',
-      display: 'inline-block',
-      marginRight: '12px',
-      marginLeft,
-      fontSize: '20px',
-      padding: '4px'
-    }}
-  >
-    {'.'}
-  </span>
-)
-
-export default function FirstPost() {
+export default function Home() {
+  let [colourOne, setColourOne] = useState('#ec3750')
+  let [colourTwo, setColourTwo] = useState('#ff8c37')
+  let [order, setOrder] = useState('to right')
+  const CircleButton = ({ circleColour, marginLeft, type }) => (
+    <span
+      onClick={() =>
+        type == 1 ? setColourOne(circleColour) : setColourTwo(circleColour)
+      }
+      style={{
+        height: '36px',
+        width: '36px',
+        backgroundColor: circleColour,
+        color: circleColour,
+        borderRadius: '50%',
+        display: 'inline-block',
+        marginRight: '12px',
+        marginLeft,
+        fontSize: '20px',
+        padding: '4px'
+      }}
+    >
+      {'.'}
+    </span>
+  )
   return (
     <Container pt="50px">
       <Heading
@@ -70,14 +76,14 @@ export default function FirstPost() {
               >
                 Colour 1
               </span>
-              <CircleButton circleColor="#ec3750" marginLeft="0px" />
-              <CircleButton circleColor="#ff8c37" />
-              <CircleButton circleColor="#f1c40f" />
-              <CircleButton circleColor="#33d6a6" />
-              <CircleButton circleColor="#5bc0de" />
-              <CircleButton circleColor="#338eda" />
-              <CircleButton circleColor="#a633d6" />
-              <CircleButton circleColor="#eb54d2" />
+              <CircleButton circleColour="#ec3750" marginLeft="0px" type={1} />
+              <CircleButton circleColour="#ff8c37" type={1} />
+              <CircleButton circleColour="#f1c40f" type={1} />
+              <CircleButton circleColour="#33d6a6" type={1} />
+              <CircleButton circleColour="#5bc0de" type={1} />
+              <CircleButton circleColour="#338eda" type={1} />
+              <CircleButton circleColour="#a633d6" type={1} />
+              <CircleButton circleColour="#eb54d2" type={1} />
             </Card>
             <Card bg="sheet" p="3">
               <span
@@ -98,20 +104,20 @@ export default function FirstPost() {
               >
                 Colour 2
               </span>
-              <CircleButton circleColor="#ec3750" marginLeft="0px" />
-              <CircleButton circleColor="#ff8c37" />
-              <CircleButton circleColor="#f1c40f" />
-              <CircleButton circleColor="#33d6a6" />
-              <CircleButton circleColor="#5bc0de" />
-              <CircleButton circleColor="#338eda" />
-              <CircleButton circleColor="#a633d6" />
-              <CircleButton circleColor="#eb54d2" />
+              <CircleButton circleColour="#ec3750" marginLeft="0px" type={2} />
+              <CircleButton circleColour="#ff8c37" type={2} />
+              <CircleButton circleColour="#f1c40f" type={2} />
+              <CircleButton circleColour="#33d6a6" type={2} />
+              <CircleButton circleColour="#5bc0de" type={2} />
+              <CircleButton circleColour="#338eda" type={2} />
+              <CircleButton circleColour="#a633d6" type={2} />
+              <CircleButton circleColour="#eb54d2" type={2} />
             </Card>
             <Card
               bg="sheet"
               sx={{
                 fontSize: '4',
-                letterSpacing: '10px',
+                letterSpacing: '9.5px',
                 padding: '3',
                 paddingTop: '28px!important'
               }}
@@ -144,18 +150,23 @@ export default function FirstPost() {
                   display: 'inline-block',
                   color: 'black',
                   fontSize: '20px',
-                  paddingLeft: '6px',
+                  paddingLeft: '5px',
                   paddingRight: '0px'
                 }}
               >
-                <span>⬆️ </span>
-                <span>⬇️ </span>
-                <span>➡️ </span>
-                <span>⬅️ </span>
-                <span>↘️ </span>
-                <span>↙️ </span>
-                <span>↖️ </span>
-                <span style={{ letterSpacing: 'normal' }}>↗️</span>
+                <span onClick={() => setOrder('to top')}>⬆️ </span>
+                <span onClick={() => setOrder('to bottom')}>⬇️ </span>
+                <span onClick={() => setOrder('to right')}>➡️ </span>
+                <span onClick={() => setOrder('to left')}>⬅️ </span>
+                <span onClick={() => setOrder('to bottom right')}>↘️ </span>
+                <span onClick={() => setOrder('to bottom left')}>↙️ </span>
+                <span onClick={() => setOrder('to top left')}>↖️ </span>
+                <span
+                  onClick={() => setOrder('to top right')}
+                  style={{ letterSpacing: 'normal' }}
+                >
+                  ↗️
+                </span>
               </span>
               <span
                 style={{
@@ -168,9 +179,28 @@ export default function FirstPost() {
           </Grid>
         </Box>
         <Box
-          bg="green"
-          sx={{ pt: '70%', ml: '15%', width: '70%', borderRadius: '12px' }}
-        ></Box>
+          sx={{
+            pt: '70%',
+            ml: '15%',
+            width: '70%',
+            borderRadius: '12px',
+            position: 'relative',
+            backgroundImage: `linear-gradient(${order}, ${colourOne} , ${colourTwo})`
+          }}
+        >
+          <h1
+            style={{
+              position: 'absolute',
+              top: '0',
+              width: '100%',
+              textAlign: 'center',
+              fontSize: '400px',
+              marginBlockStart: '-0.25em'
+            }}
+          >
+            H
+          </h1>
+        </Box>
       </Grid>
     </Container>
   )
