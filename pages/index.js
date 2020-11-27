@@ -32,7 +32,7 @@ export default function FirstPost() {
           borderBottom: '5px solid var(--theme-ui-colors-elevated,#252429)'
         }}
       >
-        <span style={{ display: 'inline-block', paddingBottom: '2px'}}>
+        <span style={{ display: 'inline-block', paddingBottom: '2px' }}>
           <span>the</span> <span style={{ color: '#ec3750' }}>H</span>
           <span style={{ color: '#ff8c37' }}>a</span>
           <span style={{ color: '#f1c40f' }}>c</span>
@@ -109,7 +109,12 @@ export default function FirstPost() {
             </Card>
             <Card
               bg="sheet"
-              sx={{ fontSize: '4', letterSpacing: '9.47px', padding: '3', paddingTop: "28px!important" }}
+              sx={{
+                fontSize: '4',
+                letterSpacing: '10px',
+                padding: '3',
+                paddingTop: '28px!important'
+              }}
             >
               <span
                 style={{
@@ -137,10 +142,10 @@ export default function FirstPost() {
                   textAlign: 'center',
                   borderRadius: '12px',
                   display: 'inline-block',
-                  marginRight: '24px',
                   color: 'black',
                   fontSize: '20px',
-                  paddingLeft: '2px'
+                  paddingLeft: '6px',
+                  paddingRight: '0px'
                 }}
               >
                 <span>⬆️ </span>
