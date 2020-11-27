@@ -28,17 +28,20 @@ export default function FirstPost() {
           fontSize: '7',
           textAlign: 'center',
           textTransform: 'uppercase',
-          color: '#8492a6'
+          color: '#8492a6',
+          borderBottom: '5px solid var(--theme-ui-colors-elevated,#252429)'
         }}
       >
-        <span>the</span> <span style={{ color: '#ec3750' }}>H</span>
-        <span style={{ color: '#ff8c37' }}>a</span>
-        <span style={{ color: '#f1c40f' }}>c</span>
-        <span style={{ color: '#33d6a6' }}>k</span>{' '}
-        <span style={{ color: '#5bc0de' }}>C</span>
-        <span style={{ color: '#338eda' }}>l</span>
-        <span style={{ color: '#a633d6' }}>u</span>
-        <span style={{ color: '#eb54d2' }}>b</span> Sign
+        <span style={{ display: 'inline-block', paddingBottom: '2px'}}>
+          <span>the</span> <span style={{ color: '#ec3750' }}>H</span>
+          <span style={{ color: '#ff8c37' }}>a</span>
+          <span style={{ color: '#f1c40f' }}>c</span>
+          <span style={{ color: '#33d6a6' }}>k</span>{' '}
+          <span style={{ color: '#5bc0de' }}>C</span>
+          <span style={{ color: '#338eda' }}>l</span>
+          <span style={{ color: '#a633d6' }}>u</span>
+          <span style={{ color: '#eb54d2' }}>b</span> Sign
+        </span>
       </Heading>
       <Grid columns={[1, 1, 2]} sx={{ mt: '4' }}>
         <Box>
@@ -106,8 +109,7 @@ export default function FirstPost() {
             </Card>
             <Card
               bg="sheet"
-              p="3"
-              sx={{ fontSize: '4', letterSpacing: '9.47px' }}
+              sx={{ fontSize: '4', letterSpacing: '9.47px', padding: '3', paddingTop: "28px!important" }}
             >
               <span
                 style={{
@@ -148,7 +150,7 @@ export default function FirstPost() {
                 <span>↘️ </span>
                 <span>↙️ </span>
                 <span>↖️ </span>
-                <span style={{letterSpacing: 'normal'}}>↗️</span>
+                <span style={{ letterSpacing: 'normal' }}>↗️</span>
               </span>
               <span
                 style={{
