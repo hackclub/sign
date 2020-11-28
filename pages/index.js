@@ -20,7 +20,8 @@ export default function Home() {
         marginRight: '12px',
         marginLeft,
         fontSize: '20px',
-        padding: '4px'
+        padding: '4px',
+        cursor: 'pointer'
       }}
     >
       {'.'}
@@ -154,16 +155,51 @@ export default function Home() {
                   paddingRight: '0px'
                 }}
               >
-                <span onClick={() => setOrder('to top')}>⬆️ </span>
-                <span onClick={() => setOrder('to bottom')}>⬇️ </span>
-                <span onClick={() => setOrder('to right')}>➡️ </span>
-                <span onClick={() => setOrder('to left')}>⬅️ </span>
-                <span onClick={() => setOrder('to bottom right')}>↘️ </span>
-                <span onClick={() => setOrder('to bottom left')}>↙️ </span>
-                <span onClick={() => setOrder('to top left')}>↖️ </span>
+                <span
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setOrder('to top')}
+                >
+                  ⬆️{' '}
+                </span>
+                <span
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setOrder('to bottom')}
+                >
+                  ⬇️{' '}
+                </span>
+                <span
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setOrder('to right')}
+                >
+                  ➡️{' '}
+                </span>
+                <span
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setOrder('to left')}
+                >
+                  ⬅️{' '}
+                </span>
+                <span
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setOrder('to bottom right')}
+                >
+                  ↘️{' '}
+                </span>
+                <span
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setOrder('to bottom left')}
+                >
+                  ↙️{' '}
+                </span>
+                <span
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setOrder('to top left')}
+                >
+                  ↖️{' '}
+                </span>
                 <span
                   onClick={() => setOrder('to top right')}
-                  style={{ letterSpacing: 'normal' }}
+                  style={{ letterSpacing: 'normal', cursor: 'pointer' }}
                 >
                   ↗️
                 </span>
