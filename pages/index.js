@@ -234,7 +234,7 @@ export default function Home() {
               marginBlockStart: '-0.25em'
             }}
           >
-            H
+            h
           </h1>
         </Box>
       </Grid>
