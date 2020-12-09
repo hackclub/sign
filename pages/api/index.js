@@ -2,7 +2,7 @@ const AirtablePlus = require('airtable-plus')
 
 const sign = new AirtablePlus({
   baseID: 'appS0DW7u8FumvGfS',
-  apiKey: 'keyfpyfwx1pVtM36t', // DO NOT COMMIT THIS
+  apiKey: process.env.AIRTABLE_API_KEY,
   tableName: 'Sign'
 })
 
