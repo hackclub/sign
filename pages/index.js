@@ -7,9 +7,15 @@ export default function Home() {
   let [order, setOrder] = useState('to right')
   const CircleButton = ({ circleColour, marginLeft, type }) => (
     <span
-      onClick={() =>
-        type == 1 ? setColourOne(circleColour) : setColourTwo(circleColour)
-      }
+      onClick={() => {
+        if (type === 1) {
+          setColourOne(circleColour)
+          update(circleColour, null, null)
+        } else if (type === 2) {
+          setColourTwo(circleColour)
+          update(null, circleColour, null)
+        }
+      }}
       style={{
         height: '36px',
         width: '36px',
@@ -157,49 +163,49 @@ export default function Home() {
               >
                 <span
                   style={{ cursor: 'pointer' }}
-                  onClick={() => setOrder('to top')}
+                  onClick={() => { setOrder('to top'); update(null, null, 'to top') }}
                 >
                   ⬆️{' '}
                 </span>
                 <span
                   style={{ cursor: 'pointer' }}
-                  onClick={() => setOrder('to bottom')}
+                  onClick={() => { setOrder('to bottom'); update(null, null, 'to bottom') }}
                 >
                   ⬇️{' '}
                 </span>
                 <span
                   style={{ cursor: 'pointer' }}
-                  onClick={() => setOrder('to right')}
+                  onClick={() => { setOrder('to right'); update(null, null, 'to right') }}
                 >
                   ➡️{' '}
                 </span>
                 <span
                   style={{ cursor: 'pointer' }}
-                  onClick={() => setOrder('to left')}
+                  onClick={() => { setOrder('to left'); update(null, null, 'to left') }}
                 >
                   ⬅️{' '}
                 </span>
                 <span
                   style={{ cursor: 'pointer' }}
-                  onClick={() => setOrder('to bottom right')}
+                  onClick={() => { setOrder('to bottom right'); update(null, null, 'to bottom right') }}
                 >
                   ↘️{' '}
                 </span>
                 <span
                   style={{ cursor: 'pointer' }}
-                  onClick={() => setOrder('to bottom left')}
+                  onClick={() => { setOrder('to bottom left'); update(null, null, 'to bottom left') }}
                 >
                   ↙️{' '}
                 </span>
                 <span
                   style={{ cursor: 'pointer' }}
-                  onClick={() => setOrder('to top left')}
+                  onClick={() => { setOrder('to top left'); update(null, null, 'to top left') }}
                 >
                   ↖️{' '}
                 </span>
                 <span
-                  onClick={() => setOrder('to top right')}
                   style={{ letterSpacing: 'normal', cursor: 'pointer' }}
+                  onClick={() => { setOrder('to top right'); update(null, null, 'to top right') }}
                 >
                   ↗️
                 </span>
@@ -241,3 +247,14 @@ export default function Home() {
     </Container>
   )
 }
+
+const update = (color1, color2, direction) => (
+  fetch('http://localhost:3000/api', {
+    method: 'POST',
+    body: JSON.stringify({
+      color1,
+      color2,
+      direction
+    })
+  })
+)
