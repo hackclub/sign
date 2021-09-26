@@ -1,5 +1,7 @@
 import { Container, Text, Card, Heading, Badge, Grid, Box } from 'theme-ui'
 import { useState } from 'react'
+import Head from 'next/head'
+import Meta from "@hackclub/meta"
 
 export default function Home() {
   let [colourOne, setColourOne] = useState('#ec3750')
@@ -29,6 +31,20 @@ export default function Home() {
   )
   return (
     <Container pt="50px">
+      <Head>
+        <Meta 
+          name="Hack Club"
+          title="Sign"
+          description="Create a custom sign for your Hack Club!"
+          image="https://cloud-mupuppm3x-hack-club-bot.vercel.app/0file_cover_-_1.png"
+          color="#ec3750" 
+        />
+        <link rel="icon" href="https://hackclub.com/icon/icon-masked.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> 
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap" rel="stylesheet" />
+      </Head>
+
       <Heading
         as="h1"
         sx={{
@@ -231,7 +247,8 @@ export default function Home() {
               width: '100%',
               textAlign: 'center',
               fontSize: '400px',
-              marginBlockStart: '-0.25em'
+              marginBlockStart: '-0.25em',
+              fontFamily: 'Amaranth, sans-serif'
             }}
           >
             h
