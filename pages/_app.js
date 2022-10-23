@@ -6,7 +6,6 @@ import { ThemeProvider, useColorMode } from 'theme-ui'
 import ColorSwitcher from '../components/color-switcher'
 
 export default class App extends NextApp {
-  
   render() {
     const { Component, pageProps } = this.props
     return (

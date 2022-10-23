@@ -1,7 +1,17 @@
-import {Container, Text, Card, Heading, Badge, Grid, Box, Button, useColorMode} from 'theme-ui'
-import {useEffect, useRef, useState} from 'react'
+import {
+  Container,
+  Text,
+  Card,
+  Heading,
+  Badge,
+  Grid,
+  Box,
+  Button,
+  useColorMode
+} from 'theme-ui'
+import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
-import Meta from "@hackclub/meta"
+import Meta from '@hackclub/meta'
 import domtoimage from 'dom-to-image'
 
 export default function Home() {
@@ -43,12 +53,20 @@ export default function Home() {
           title="Sign"
           description="Create a custom sign for your Hack Club!"
           image="https://cloud-mupuppm3x-hack-club-bot.vercel.app/0file_cover_-_1.png"
-          color="#ec3750" 
+          color="#ec3750"
         />
         <link rel="icon" href="https://hackclub.com/icon/icon-masked.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com"/> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap"
+          rel="stylesheet"
+          crossOrigin="anonymous"
+        />
         <title>Hack Club Sign</title>
       </Head>
 
@@ -235,55 +253,60 @@ export default function Home() {
                 }}
               ></span>
             </Card>
-            <Button onClick={() => {
-              domtoimage.toPng(sign.current)
-                .then((dataUrl) => {
-                  let canvas = document.createElement('canvas');
-                  canvas.width = 400;
-                  canvas.height = 400;
-                  let ctx = canvas.getContext('2d');
-                  let img = new Image();
+            <Button
+              onClick={() => {
+                domtoimage.toPng(sign.current).then(dataUrl => {
+                  let canvas = document.createElement('canvas')
+                  canvas.width = 400
+                  canvas.height = 400
+                  let ctx = canvas.getContext('2d')
+                  let img = new Image()
                   img.src = dataUrl
-                  img.onload = function() {
-                    ctx.drawImage(img, 0, 0, 400, 400, 0, 0, 400, 400);
-                    let a = document.createElement('a');
-                    a.download = 'hack-club-sign.png';
+                  img.onload = function () {
+                    ctx.drawImage(img, 0, 0, 400, 400, 0, 0, 400, 400)
+                    let a = document.createElement('a')
+                    a.download = 'hack-club-sign.png'
                     a.href = canvas.toDataURL()
-                    a.click();
+                    a.click()
                   }
                 })
-            }} variant="ctaLg"
-            >Export PNG</Button>
+              }}
+              variant="ctaLg"
+            >
+              Export PNG
+            </Button>
           </Grid>
         </Box>
-        <Box sx={{
-          ml: '15%'
-        }}>
         <Box
-          ref={sign}
           sx={{
-            pt: '400px',
-            width: '400px',
-            height: '400px',
-            borderRadius: '12px',
-            position: 'relative',
-            backgroundImage: `linear-gradient(${order}, ${colourOne} , ${colourTwo})`
+            ml: '15%'
           }}
         >
-          <h1
-            style={{
-              position: 'absolute',
-              top: '0',
-              width: '100%',
-              textAlign: 'center',
-              fontSize: '400px',
-              marginBlockStart: '-0.25em',
-              fontFamily: 'Amaranth, sans-serif'
+          <Box
+            ref={sign}
+            sx={{
+              pt: '400px',
+              width: '400px',
+              height: '400px',
+              borderRadius: '12px',
+              position: 'relative',
+              backgroundImage: `linear-gradient(${order}, ${colourOne} , ${colourTwo})`
             }}
           >
-            h
-          </h1>
-        </Box>
+            <h1
+              style={{
+                position: 'absolute',
+                top: '0',
+                width: '100%',
+                textAlign: 'center',
+                fontSize: '400px',
+                marginBlockStart: '-0.25em',
+                fontFamily: 'Amaranth, sans-serif'
+              }}
+            >
+              h
+            </h1>
+          </Box>
         </Box>
       </Grid>
     </Container>
