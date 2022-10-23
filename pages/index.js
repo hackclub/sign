@@ -1,9 +1,15 @@
-import { Container, Text, Card, Heading, Badge, Grid, Box } from 'theme-ui'
-import { useState } from 'react'
+import {Container, Text, Card, Heading, Badge, Grid, Box, Button, useColorMode} from 'theme-ui'
+import {useEffect, useRef, useState} from 'react'
 import Head from 'next/head'
 import Meta from "@hackclub/meta"
+import domtoimage from 'dom-to-image'
 
 export default function Home() {
+  const [colorMode, setColorMode] = useColorMode()
+  useEffect(() => {
+    setColorMode('dark')
+  }, [setColorMode])
+  const sign = useRef(null)
   let [colourOne, setColourOne] = useState('#ec3750')
   let [colourTwo, setColourTwo] = useState('#ff8c37')
   let [order, setOrder] = useState('to right')
@@ -32,7 +38,7 @@ export default function Home() {
   return (
     <Container pt="50px">
       <Head>
-        <Meta 
+        <Meta
           name="Hack Club"
           title="Sign"
           description="Create a custom sign for your Hack Club!"
@@ -41,8 +47,9 @@ export default function Home() {
         />
         <link rel="icon" href="https://hackclub.com/icon/icon-masked.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com"/> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> 
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+        <title>Hack Club Sign</title>
       </Head>
 
       <Heading
@@ -228,13 +235,36 @@ export default function Home() {
                 }}
               ></span>
             </Card>
+            <Button onClick={() => {
+              domtoimage.toPng(sign.current)
+                .then((dataUrl) => {
+                  let canvas = document.createElement('canvas');
+                  canvas.width = 400;
+                  canvas.height = 400;
+                  let ctx = canvas.getContext('2d');
+                  let img = new Image();
+                  img.src = dataUrl
+                  img.onload = function() {
+                    ctx.drawImage(img, 0, 0, 400, 400, 0, 0, 400, 400);
+                    let a = document.createElement('a');
+                    a.download = 'hack-club-sign.png';
+                    a.href = canvas.toDataURL()
+                    a.click();
+                  }
+                })
+            }} variant="ctaLg"
+            >Export PNG</Button>
           </Grid>
         </Box>
+        <Box sx={{
+          ml: '15%'
+        }}>
         <Box
+          ref={sign}
           sx={{
-            pt: '70%',
-            ml: '15%',
-            width: '70%',
+            pt: '400px',
+            width: '400px',
+            height: '400px',
             borderRadius: '12px',
             position: 'relative',
             backgroundImage: `linear-gradient(${order}, ${colourOne} , ${colourTwo})`
@@ -253,6 +283,7 @@ export default function Home() {
           >
             h
           </h1>
+        </Box>
         </Box>
       </Grid>
     </Container>
